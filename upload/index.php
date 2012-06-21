@@ -6,7 +6,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 		if($loginInfo[$_POST['username']]==$_POST['password']){
 			// User and password check out. Assign the client a cookie and route them to the home page.
 			setcookie('username', $_POST['username'], time()+3600);
-			header('Location: '.$config['rootdomain'].'/home.php') ;
+			header('Location: '.$config['rootdomain'].'home.php') ;
 		}else{
 			$error = true;
 			$errorMessage = "Username or password incorrect! Please try again.";
