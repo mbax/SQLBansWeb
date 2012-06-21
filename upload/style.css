@@ -1,0 +1,14 @@
+/** Reset everything **/
+body, div, h1, h2, h3, p, ul, ol, li, img, header, section, aside, footer, button {
+	margin: 0; padding: 0; border: 0; list-style: none;
+}
+header#logo {
+	/** Empty for now **/
+}
+#main_content {
+	background: white;
+	text: black;
+}
+footer#credits {
+	/** Empty for now **/
+}

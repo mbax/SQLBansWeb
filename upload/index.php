@@ -36,17 +36,19 @@ if($config['debug']){ error_reporting(E_ALL); }
 		Password: <input type="password" name="password"/><br>
 		<input type="submit" vaule="Login">
 	</form>
-	<p>Welcome! No clue why your here, but let's get to know each other!</p>
-	<br>
-	<p>My name is tips48. You might wonder why i'm talking. Well, let me tell you a secret</p>
-	<p>Can you hear me?</p>
-	<br>
-	<br>
-	<br>
-	<p>It's because I will use this to check the styling and the font!</p>
-	<p>Also, my favorite number is 123456789</p>
-	<br>
-	<p>In case you were wondering</p>
+	<div id="main_content">
+		<p>Welcome! No clue why your here, but let's get to know each other!</p>
+		<br>
+		<p>My name is tips48. You might wonder why i'm talking. Well, let me tell you a secret</p>
+		<p>Can you hear me?</p>
+		<br>
+		<br>
+		<br>
+		<p>It's because I will use this to check the styling and the font!</p>
+		<p>Also, my favorite number is 123456789</p>
+		<br>
+		<p>In case you were wondering</p>
+	</div>
 	<footer id="credits">
 		<!-- Credits -->
 		<p>Credits goes here</p>
