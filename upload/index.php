@@ -2,9 +2,9 @@
 include('config.php');
 $error = false;
 if(!$config['inconspicuousValue']){ die('You didn\'t read the instructions. Shame.'); }
-if(isset($_POST['username']) && isset($_POST['password'])){
+if(isset($_POST['login'])){
 	if($config['useSimpleAuth']){
-		if($loginInfo[$_POST['username']]==$_POST['password']){
+		if($loginInfo[$_POST['login']['username']]==$_POST['login']['password']){
 			// User and password check out. Assign the client a cookie and route them to the home page.
 			setcookie('username', $_POST['username'], time()+3600);
 			header('Location: '.$config['rootdomain'].'home.php') ;
