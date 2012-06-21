@@ -16,17 +16,14 @@ if(isset($_GET['do']) && $_GET['do'] == 'login'){
 	/*
 	 * If Login is Successful $e is set to 'false', and two sessions are set.
 	 */
+	$e = true;
 	if($sqlbans->auth->doLogin($username, $password) === true){
 	
 		$sqlbans->auth->setSession();
 		$e = false;
 	
-	}else{
-	
-		$e = true;
-	
 	}
-
+	
 }
 
 ?>
