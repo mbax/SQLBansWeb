@@ -28,7 +28,7 @@ if($config['debug']){ error_reporting(E_ALL); }
 <?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; }?>
 	<header id="logo">
 		<!-- Logo -->
-		<p>The logo goes.....HERE!</p>
+		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "images/defaultLogo.png"; } ?>' \>
 	</header>
 	<hr>
 	<!-- Login fields here, stuff like that. -->
