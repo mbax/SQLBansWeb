@@ -34,9 +34,9 @@ function getTimeFromSeconds($init){
 	return $out;
 }
 
-$appealDatabaseHandle = mysql_connect($config['mysql']['host'].":".$config['mysql']['port'], $config['mysql']['user'], $config['mysql']['host']) or die(mysql_error());
-mysql_select_db($config['mysql']['database'], $appealDatabaseHandle) or die(mysql_error());
-$query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable'], $appealDatabaseHandle) or die(mysql_error());
+$databaseHandle = mysql_connect($config['mysql']['host'].":".$config['mysql']['port'], $config['mysql']['user'], $config['mysql']['host']) or die(mysql_error());
+mysql_select_db($config['mysql']['database'], $databaseHandle) or die(mysql_error());
+$query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable'], $databaseHandle) or die(mysql_error());
 $appeals = array();
 while($row = mysql_fetch_array($query)){
 	$pubID = $row['pubid'];

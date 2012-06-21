@@ -2,9 +2,9 @@
 include('config.php');
 // Make sure that what we're searching for is safe to use in a query string. VERY important, don't remove.
 $pubID = strtolower(htmlspecialchars($_GET['id']));
-$appealDatabaseHandle = mysql_connect($config['mysql']['host'].":".$config['mysql']['port'], $config['mysql']['user'], $config['mysql']['host']) or die(mysql_error());
-mysql_select_db($config['mysql']['database'], $appealDatabaseHandle) or die(mysql_error());
-$query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable']." WHERE pubid='$pubID'", $appealDatabaseHandle) or die(mysql_error());
+$databaseHandle = mysql_connect($config['mysql']['host'].":".$config['mysql']['port'], $config['mysql']['user'], $config['mysql']['host']) or die(mysql_error());
+mysql_select_db($config['mysql']['database'], $databaseHandle) or die(mysql_error());
+$query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable']." WHERE pubid='$pubID'", $databaseHandle) or die(mysql_error());
 $output = mysql_fetch_array($query);
 $pageName = $output['username']."'s Ban Appeal";
 if($output==false){
