@@ -16,10 +16,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 		mysql_select_db($config['SQLUserDB']['host'], $userDatabaseHandle);
 	}
 }
-if($config['debug']){
-	$pageToOutput = $_GET['page'];
-	error_reporting(E_ALL);
-}
+if($config['debug']){ error_reporting(E_ALL); }
 ?>
 <!DOCTYPE HTML>
 <html>
