@@ -20,12 +20,22 @@ if($config['debug']){
 	error_reporting(E_ALL);
 }
 ?>
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Website title</title>
 </head>
 <body>
-<?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; ?>
+<?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; }?>
+	<header id="logo">
+		<p>The logo goes.....HERE!</p>
+	</header>
+	<hr>
+	<!-- Login fields here, stuff like that. -->
+	<p>Login field goes here</p>
+	<footer id="credits">
+		<p>Footer goes here</p>
+	</footer>
 	<p>Welcome! No clue why your here, but let's get to know eachother!</p>
 	<br>
 	<p>My name is tips48. You might wonder why i'm talking. Well, let me tell you a secret</p>
@@ -37,6 +47,5 @@ if($config['debug']){
 	<p>Also, my favorite number is 123456789</p>
 	<br>
 	<p>In case you were wondering</p>
-<!-- Login fields here, stuff like that. -->
 </body>
 </html>
