@@ -24,6 +24,8 @@ $config['mysql']['appealtable'] = 'sqlb_appeals';
 
 // -------------- General Config Flags --------------
 
+// What is the root domain of the site? Make sure to keep the slashes.
+$config['rootdomain'] = 'http://mysite.com/';
 // Should debug mode be on? This should always be off unless you have a specific reason for it to be on.
 $config['debug'] = true;
 // Have you read the instructions?
