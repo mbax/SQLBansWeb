@@ -17,7 +17,7 @@ if(isset($_POST['username']) && isset($_POST['username'])){
 	}else{
 		$userDatabaseHandle = mysql_connect($config['SQLUserDB']['host'].":".$config['SQLUserDB']['port'], $config['SQLUserDB']['user'], $config['SQLUserDB']['host']);
 		mysql_select_db($config['SQLUserDB']['host'], $userDatabaseHandle);
-		$query = ("SELECT * FROM ".$config['SQLUserDB']['table'], $userDatabaseHandle);
+		$query = mysql_query("SELECT * FROM ".$config['SQLUserDB']['table'], $userDatabaseHandle);
 		while($row = mysql_fetch_array($query)){
 			if($row['username']==$_POST['username'] && $row['password']==$_POST['password']){
 				echo "Login Accepted!";
