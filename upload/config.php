@@ -60,5 +60,4 @@ $loginInfo = array(
 	"mbaxter" => "tHiSiSsEcUr3!",
 	"admin" => "password"
 );
-if($_GET['d']==1){ var_dump($config); }
 ?>
