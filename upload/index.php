@@ -22,11 +22,21 @@ if($config['debug']){
 ?>
 <html>
 <head>
-<!-- More stuff here. Whatevs -->
+	<title>Website title</title>
 </head>
 <body>
 <?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; ?>
-
+	<p>Welcome! No clue why your here, but let's get to know eachother!</p>
+	<br>
+	<p>My name is tips48. You might wonder why i'm talking. Well, let me tell you a secret</p>
+	<p>Can you hear me?</p>
+	<br>
+	<br>
+	<br>
+	<p>It's because I will use this to check the styling and the font!</p>
+	<p>Also, my favorite number is 123456789</p>
+	<br>
+	<p>In case you were wondering</p>
 <!-- Login fields here, stuff like that. -->
 </body>
 </html>
