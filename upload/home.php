@@ -40,14 +40,14 @@ $query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable'], $appealD
 $appeals = array();
 while($row = mysql_fetch_array($query)){
 	$pubID = $row['pubid'];
-	$push = array('id' => $row['pubid'], 'name' => $row['username'], 'mod' => $row['admin'], 'time' => $row['time'], 'duration' => $row['duration'], 'reason' => $row['reason'], 'status' => $row['status']);
+	$push = array('id' => $row['pubid'], 'username' => $row['username'], 'mod' => $row['admin'], 'time' => $row['time'], 'duration' => $row['duration'], 'reason' => $row['reason'], 'status' => $row['status']);
 	array_push($appeals, $push);
 }
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Home</title>
+	<title><?php echo $config['siteName']; ?> - Home</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
@@ -76,7 +76,7 @@ while($row = mysql_fetch_array($query)){
 				<th>Reason</th>
 				<th>Approved</th>
 			</tr>
-			<?php foreach($appeals as $appeal){ echo "<tr><td><a href='".$config['rootdomain']."/review.php?id=".$appeal['id']."'>".$appeal['name']."</a></td><td>".$appeal['mod']."</td><td>".date("F j, Y, g:i a", $appeal['time'])."</td><td>".getTimeFromSeconds($appeal['duration'])."</td><td>".$appeal['reason']."</td><td>";
+			<?php foreach($appeals as $appeal){ echo "<tr><td><a href='".$config['rootdomain']."/review.php?id=".$appeal['id']."'>".$appeal['username']."</a></td><td>".$appeal['mod']."</td><td>".date("F j, Y, g:i a", $appeal['time'])."</td><td>".getTimeFromSeconds($appeal['duration'])."</td><td>".$appeal['reason']."</td><td>";
 			if($appeal['status']=='approved'){ echo "<div style='font-color:green;'>Approved</div>"; }elseif($appeal['status']=='unapproved'){ echo "<div style='font-color:grey;'>Not approved</div>";}elseif($appeal['status']=='denied'){ echo "<div style='font-color:red;'>Denied</div>";}
 			echo "</td></tr>"; } ?>
 		</table>
