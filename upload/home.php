@@ -43,7 +43,7 @@ include('assets/classes/class.core.php');
 			
 					while($appeal = mysql_fetch_assoc($query)){
 
-						switch($row['status']){
+						switch($appeal['status']){
 							case 'approved':
 								$isApproved = "<div style='font-color:green;'>Approved</div>";
 								break;
