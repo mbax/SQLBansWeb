@@ -12,7 +12,8 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 			$errorMessage = "Username or password incorrect! Please try again.";
 		}
 	}else{
-		// Use the MySQL database.
+		$userDatabaseHandle = mysql_connect($config['SQLUserDB']['host'].":".$config['SQLUserDB']['port'], $config['SQLUserDB']['user'], $config['SQLUserDB']['host']);
+		mysql_select_db($config['SQLUserDB']['host'], $userDatabaseHandle);
 	}
 }
 if($config['debug']){
