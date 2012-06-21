@@ -1,51 +1,45 @@
 <?php
-include('config.php');
-$error = false;
-if(!$config['inconspicuousValue']){ die('You didn\'t read the instructions. Shame.'); }
-if(isset($_POST['username']) && isset($_POST['username'])){
-	if($config['useSimpleAuth']){
-		if($loginInfo[$_POST['username']]==$_POST['password']){
-			// User and password check out. Assign the client a cookie and route them to the home page.
-			echo "Login Accepted!";
-#			setcookie('username', $_POST['username'], time()+3600);
-#			header('Location: '.$config['rootdomain'].'home.php') ;
-		}else{
-			echo "Login Rejected.";
-			$error = true;
-			$errorMessage = "Username or password incorrect! Please try again.";
-		}
-	}else{
-		$userDatabaseHandle = mysql_connect($config['SQLUserDB']['host'].":".$config['SQLUserDB']['port'], $config['SQLUserDB']['user'], $config['SQLUserDB']['host']);
-		mysql_select_db($config['SQLUserDB']['host'], $userDatabaseHandle);
-		$query = mysql_query("SELECT * FROM ".$config['SQLUserDB']['table'], $userDatabaseHandle);
-		while($row = mysql_fetch_array($query)){
-			if($row['username']==$_POST['username'] && $row['password']==$_POST['password']){
-				echo "Login Accepted!";
-				$accepted = true;
-#				setcookie('username', $_POST['username'], time()+3600);
-#				header('Location: '.$config['rootdomain'].'home.php') ;
-				break;
-			}
-		}
-		if(!isset($accepted)){
-			$error = true;
-			$errorMessage = "Username or password incorrect! Please try again.";
-		}
-	}
-}
+session_start();
+include('assets/classes/class.core.php');
+
 if($config['debug']){ error_reporting(E_ALL); }
+
+/*
+ * Handle Login
+ */
+if(isset($_GET['do']) && $_GET['do'] == 'login'){
+
+	$username = mysql_real_escape_string($_POST['username']);
+	$password = $_POST['password'];
+	
+	
+	/*
+	 * If Login is Successful $e is set to 'false', and two sessions are set.
+	 */
+	if($sqlbans->auth->doLogin($username, $password) === true){
+	
+		$sqlbans->auth->setSession();
+		$e = false;
+	
+	}else{
+	
+		$e = true;
+	
+	}
+
+}
+
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<title><?php echo $config['siteName']; ?> - Login</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
 <body>
-<?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; }?>
 	<header id="logo">
 		<!-- Logo -->
-		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "images/defaultLogo.png"; } ?>' \>
+		<img src="assets/images/logo.png" />
 	</header>
 	<hr>
 	<!-- Login fields here, stuff like that. -->

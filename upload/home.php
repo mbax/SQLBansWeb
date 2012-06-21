@@ -1,59 +1,17 @@
 <?php
-include('config.php');
-
-if($config['debug']){ $appeals = array( 1=>array( 'id' => 'fj4d7m2', 'name' => 'AgentKid', 'mod' => 'tips48', 'time' => 1340276385, 'duration' => 500000, 'reason' => 'You are too smart for our server.', 'approved' => false)); }
-
-function getTimeFromSeconds($init){
-	$years = floor($init / 31536000);
-	$init = $init-($years*31536000);
-	$months = floor($init / 2628000);
-	$init = $init-($months*2628000);
-	$weeks = floor($init / 604800);
-	$init = $init-($weeks*604800);
-	$days = floor($init / 86400);
-	$init = $init-($days*86400);
-	$hours = floor($init / 3600);
-	$init = $init-($hours*3600);
-	$minutes = floor($init / 60);
-	$init = $init-($minutes*60);
-	$seconds = $init;
-	if($years>1){ $out = $years." years, ";}
-	if($years==1){ $out = $years." year, ";}
-	if($months>1){ $out = $out.$months." months, ";}
-	if($months==1){ $out = $out.$months." month, ";}
-	if($weeks>1){ $out = $out.$weeks." weeks, ";}
-	if($weeks==1){ $out = $out.$weeks." week, ";}
-	if($days>1){ $out = $out.$days." days, ";}
-	if($days==1){ $out = $out.$days." day, ";}
-	if($hours>1){ $out = $out.$hours." hours, ";}
-	if($hours==1){ $out = $out.$hours." hour, ";}
-	if($minutes>1){ $out = $out.$minutes." minutes, ";}
-	if($minutes==1){ $out = $out.$minutes." minute, ";}
-	if($seconds>1){ $out = $out.$seconds." seconds ";}
-	if($seconds==1){ $out = $out.$seconds." second ";}
-	return $out;
-}
-
-$databaseHandle = mysql_connect($config['mysql']['host'].":".$config['mysql']['port'], $config['mysql']['user'], $config['mysql']['host']) or die(mysql_error());
-mysql_select_db($config['mysql']['database'], $databaseHandle) or die(mysql_error());
-$query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable'], $databaseHandle) or die(mysql_error());
-$appeals = array();
-while($row = mysql_fetch_array($query)){
-	$pubID = $row['pubid'];
-	$push = array('id' => $row['pubid'], 'username' => $row['username'], 'mod' => $row['admin'], 'time' => $row['time'], 'duration' => $row['duration'], 'reason' => $row['reason'], 'status' => $row['status']);
-	array_push($appeals, $push);
-}
+session_start();
+include('assets/classes/class.core.php');
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
 	<title><?php echo $config['siteName']; ?> - Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 </head>
 <body>
 	<header id="logo">
 		<!-- Logo -->
-		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "images/defaultLogo.png"; } ?>' \>
+		<img src="assets/images/logo.png" />
 	</header>
 	<hr>
 	<div id="main_content">
@@ -76,9 +34,49 @@ while($row = mysql_fetch_array($query)){
 				<th>Reason</th>
 				<th>Approved</th>
 			</tr>
-			<?php foreach($appeals as $appeal){ echo "<tr><td><a href='".$config['rootdomain']."/review.php?id=".$appeal['id']."'>".$appeal['username']."</a></td><td>".$appeal['mod']."</td><td>".date("F j, Y, g:i a", $appeal['time'])."</td><td>".getTimeFromSeconds($appeal['duration'])."</td><td>".$appeal['reason']."</td><td>";
-			if($appeal['status']=='approved'){ echo "<div style='font-color:green;'>Approved</div>"; }elseif($appeal['status']=='unapproved'){ echo "<div style='font-color:grey;'>Not approved</div>";}elseif($appeal['status']=='denied'){ echo "<div style='font-color:red;'>Denied</div>";}
-			echo "</td></tr>"; } ?>
+			<?php 
+			
+				/*
+				 * Select all Appeals
+				 */
+				$query = mysql_query("SELECT * FROM ".$config['mysql']['appealstable'])or die(mysql_error());
+			
+					while($appeal = mysql_fetch_assoc($query)){
+
+						switch($row['status']){
+							case 'approved':
+								$isApproved = "<div style='font-color:green;'>Approved</div>";
+								break;
+							case 'unapproved':
+								$isApproved = "<div style='font-color:grey;'>Not approved</div>";
+								break;
+							case 'denied':
+								$isApproved = "<div style='font-color:red;'>Denied</div>";
+								break;
+						}
+
+						echo "<tr>
+								<td>
+									<a href='".$config['rootdomain']."/review.php?id=".$appeal['pubid']."'>".$appeal['username']."</a>
+								</td>
+								<td>
+									".$appeal['admin']."
+								</td>
+								<td>
+									".date("F j, Y, g:i a", $appeal['time'])."
+								</td>
+								<td>
+									".$sqlbans->time->secToTime($appeal['duration'])."
+								</td>
+								<td>
+									".$appeal['reason']."
+								</td>
+								<td>
+									".$isApproved."
+								</td>
+							</tr>"
+					}
+			?>
 		</table>
 	</div>
 	<footer id="credits">
