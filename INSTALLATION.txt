@@ -1,0 +1,13 @@
+This file contains the system requirements and installation procedures for the SQLBans web interface.
+
+---------- System Requirements ----------
+* A Nginx or Apache web server
+* PHP 5.0 or later
+* A MySQL database server
+* A user on the MySQL database that has read and write privilages
+
+---------- Installation Instructions ----------
+1. If you downloaded SQLBansWeb via BukkitDev, unzip the archive you downloaded.
+2. Open config.php in the root directory with a text editor. Read each value carefully and set it correctly to avoid errors.
+3. Upload the CONTENTS of the upload directory to your web server.
+4. Log in and check to make sure everything is working properly.

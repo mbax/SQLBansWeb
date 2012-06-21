@@ -26,6 +26,8 @@ $config['mysql']['appealtable'] = 'sqlb_appeals';
 
 // Should debug mode be on? This should always be off unless you have a specific reason for it to be on.
 $config['debug'] = true;
+// Have you read the instructions?
+$config['inconspicuousValue'] = false;
 // Warn the moderators about global bans using the FishBans global ban aggregator? http://fishbans.com for info on FishBans.
 $config['useFishBans'] = true;
 // Logo to use for all rendered pages.
