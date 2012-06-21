@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^/review/([0-9])/ /review.php?id=$1
+RewriteRule ^/review/([a-z0-9_-]+)/ /review.php?id=$1
