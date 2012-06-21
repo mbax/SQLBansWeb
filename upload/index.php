@@ -6,9 +6,11 @@ if(isset($_POST['login'])){
 	if($config['useSimpleAuth']){
 		if($loginInfo[$_POST['login']['username']]==$_POST['login']['password']){
 			// User and password check out. Assign the client a cookie and route them to the home page.
-			setcookie('username', $_POST['username'], time()+3600);
-			header('Location: '.$config['rootdomain'].'home.php') ;
+			echo "Login Accepted!";
+#			setcookie('username', $_POST['username'], time()+3600);
+#			header('Location: '.$config['rootdomain'].'home.php') ;
 		}else{
+			echo "Login Rejected.";
 			$error = true;
 			$errorMessage = "Username or password incorrect! Please try again.";
 		}
@@ -22,7 +24,7 @@ if($config['debug']){ error_reporting(E_ALL); }
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Website title</title>
+	<title><?php echo $config['siteName']; ?> - Login</title>
 </head>
 <body>
 <?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; }?>
