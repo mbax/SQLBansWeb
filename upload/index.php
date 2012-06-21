@@ -2,9 +2,9 @@
 include('config.php');
 $error = false;
 if(!$config['inconspicuousValue']){ die('You didn\'t read the instructions. Shame.'); }
-if(isset($_POST['login'])){
+if(isset($_POST['username']) && isset($_POST['username'])){
 	if($config['useSimpleAuth']){
-		if($loginInfo[$_POST['login']['username']]==$_POST['login']['password']){
+		if($loginInfo[$_POST['username']]==$_POST['password']){
 			// User and password check out. Assign the client a cookie and route them to the home page.
 			echo "Login Accepted!";
 #			setcookie('username', $_POST['username'], time()+3600);
@@ -17,6 +17,20 @@ if(isset($_POST['login'])){
 	}else{
 		$userDatabaseHandle = mysql_connect($config['SQLUserDB']['host'].":".$config['SQLUserDB']['port'], $config['SQLUserDB']['user'], $config['SQLUserDB']['host']);
 		mysql_select_db($config['SQLUserDB']['host'], $userDatabaseHandle);
+		$query = ("SELECT * FROM ".$config['SQLUserDB']['table'], $userDatabaseHandle);
+		while($row = mysql_fetch_array($query)){
+			if($row['username']==$_POST['username'] && $row['password']==$_POST['password']){
+				echo "Login Accepted!";
+				$accepted = true;
+#				setcookie('username', $_POST['username'], time()+3600);
+#				header('Location: '.$config['rootdomain'].'home.php') ;
+				break;
+			}
+		}
+		if(!isset($accepted)){
+			$error = true;
+			$errorMessage = "Username or password incorrect! Please try again.";
+		}
 	}
 }
 if($config['debug']){ error_reporting(E_ALL); }
