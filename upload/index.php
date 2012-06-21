@@ -25,6 +25,7 @@ if($config['debug']){ error_reporting(E_ALL); }
 <html>
 <head>
 	<title><?php echo $config['siteName']; ?> - Login</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 <?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; }?>
