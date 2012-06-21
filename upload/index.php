@@ -28,15 +28,17 @@ if($config['debug']){
 <body>
 <?php if($error){ echo "The error code's html brackets ".$error." the closing brackets."; }?>
 	<header id="logo">
+		<!-- Logo -->
 		<p>The logo goes.....HERE!</p>
 	</header>
 	<hr>
 	<!-- Login fields here, stuff like that. -->
-	<p>Login field goes here</p>
-	<footer id="credits">
-		<p>Footer goes here</p>
-	</footer>
-	<p>Welcome! No clue why your here, but let's get to know eachother!</p>
+	<form name="login" action="#" method="post">
+		Username: <input type="text" name="username"/><br>
+		Password: <input type="password" name="password"/><br>
+		<input type="submit" vaule="Login">
+	</form>
+	<p>Welcome! No clue why your here, but let's get to know each other!</p>
 	<br>
 	<p>My name is tips48. You might wonder why i'm talking. Well, let me tell you a secret</p>
 	<p>Can you hear me?</p>
@@ -47,5 +49,9 @@ if($config['debug']){
 	<p>Also, my favorite number is 123456789</p>
 	<br>
 	<p>In case you were wondering</p>
+	<footer id="credits">
+		<!-- Credits -->
+		<p>Credits goes here</p>
+	</footer>
 </body>
 </html>
