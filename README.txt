@@ -1,7 +1,10 @@
-Insert some --clever-- random shit here.
+==================== SQLBansWeb ====================
+SQLBansWeb is a web interface for appealing bans made
+with the SQLBans plugin. Installation instructions can
+be found in the root directory, along with the license.
+
+
 Authors:
-- mbaxter (Ew)
-- AgentK (Double the Ew)
-- Tips48 (Not really)
-Purpose:
-- To ban minecraft users/people/stuff/things
+- AgentK
+- Tips48
+- mbaxter
