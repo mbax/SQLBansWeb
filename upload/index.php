@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+$error = false;
 if(!$config['inconspicuousValue']){ die('You didn\'t read the instructions. Shame.'); }
 if(isset($_POST['username']) && isset($_POST['password'])){
 	if($config['useSimpleAuth']){
