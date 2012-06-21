@@ -29,7 +29,7 @@ $config['rootdomain'] = 'http://mysite.com/';
 // Logo to use for all rendered pages.
 $config['logoURL'] = 'http://araeosia.com/bans/logo.png';
 // The name of the site. If you put "Site Name Here", pages would be rendered as "Site Name Here - Home" and "Site Name Here - Ban Appeal"
-$config['siteName'] = 'SQLBans'
+$config['siteName'] = 'SQLBans';
 
 
 // -------------- General Config Flags --------------
@@ -37,7 +37,7 @@ $config['siteName'] = 'SQLBans'
 // Should debug mode be on? This should always be off unless you have a specific reason for it to be on.
 $config['debug'] = true;
 // Have you read the instructions?
-$config['inconspicuousValue'] = false;
+$config['inconspicuousValue'] = true;
 // Warn the moderators about global bans using the FishBans global ban aggregator? http://fishbans.com for info on FishBans.
 $config['useFishBans'] = true;
 // Use an array in this file (see Users and passwords) for storing users, or use a MySQL database? If set to false, the SQLUserDB settings must be set
