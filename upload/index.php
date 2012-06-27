@@ -36,7 +36,7 @@ if(isset($_GET['do']) && $_GET['do'] == 'login'){
 <body>
 	<header id="logo">
 		<!-- Logo -->
-		<img src="assets/images/logo.png" />
+		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "images/defaultLogo.png"; } ?>' \>
 	</header>
 	<hr>
 	<!-- Login fields -->

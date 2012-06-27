@@ -11,7 +11,7 @@ include('assets/classes/class.core.php');
 <body>
 	<header id="logo">
 		<!-- Logo -->
-		<img src="assets/images/logo.png" />
+		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "images/defaultLogo.png"; } ?>' \>
 	</header>
 	<hr>
 	<div id="main_content">
