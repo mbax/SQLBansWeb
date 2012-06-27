@@ -16,9 +16,9 @@ $config['mysql']['password'] = 'MyNewPassword123';
 // The database where the SQLBans table is located.
 $config['mysql']['database'] = 'MyDatabaseName';
 // The name of the table in the above database for storing bans.
-$config['mysql']['banstable'] = 'sqlb_bans';
+$config['mysql']['banstable'] = 'SQLBans_bans';
 // The name of the table in the above database for storing appeals.
-$config['mysql']['appealtable'] = 'sqlb_appeals';
+$config['mysql']['appealtable'] = 'SQLBans_appeals';
 
 
 
