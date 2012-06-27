@@ -39,7 +39,7 @@ if(isset($_GET['do']) && $_GET['do'] == 'login'){
 		<img src="assets/images/logo.png" />
 	</header>
 	<hr>
-	<!-- Login fields here, stuff like that. -->
+	<!-- Login fields -->
 	<form name="login" action="#" method="post">
 		Username: <input type="text" name="username"/><br>
 		Password: <input type="password" name="password"/><br>
