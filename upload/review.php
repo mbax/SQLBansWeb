@@ -14,7 +14,7 @@ if($output==false){
 }
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
 	<title><?php echo $config['siteName']." - ".$pageName; ?></title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
@@ -26,7 +26,7 @@ if($output==false){
 	</header>
 	<hr>
 	<div id="main_content">
-		
+		<p>Text</p>
 	</div>
 	<footer id="credits">
 		<!-- Credits -->

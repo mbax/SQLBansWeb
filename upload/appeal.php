@@ -17,8 +17,25 @@ if(isset($_POST['appealform'])){
 }
 
 ?>
-<html>
+<html lang="en">
 <head>
 	<title><?php echo $config['siteName']." - ".$pageName; ?></title>
 </head>
 <body>
+	<header id="logo">
+		<!-- Logo -->
+		<img src="assets/images/logo.png" />
+	</header>
+	<hr>
+	<!-- Main content -->
+	<div id="main_content">
+		<p>Text here</p>
+		<footer id="credits">
+	</div>
+	<!-- Credits -->
+	<footer id="credits">
+		<p>Credits goes here</p>
+	</footer>
+</body>
+
+</html>

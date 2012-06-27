@@ -28,7 +28,7 @@ if(isset($_GET['do']) && $_GET['do'] == 'login'){
 
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <head>
 	<title><?php echo $config['siteName']; ?> - Login</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
