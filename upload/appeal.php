@@ -24,7 +24,7 @@ if(isset($_POST['appealform'])){
 <body>
 	<header id="logo">
 		<!-- Logo -->
-		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "images/defaultLogo.png"; } ?>' \>
+		<img src='<?php if(file_exists($config['logoURL'])){ echo $config['logoURL']; }else{ echo "assets/images/defaultLogo.png"; } ?>' \>
 	</header>
 	<hr>
 	<!-- Main content -->
