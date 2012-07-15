@@ -43,8 +43,7 @@ class auth {
 			/*
 			 * MySQL Password
 			 */
-			 $database = new database($config['SQLUserDB']['user'], $config['SQLUserDB']['password'], $config['SQLUserDB']['host'], $config['SQLUserDB']['port'], $config['SQLUserDB']['database']);
-			 mysql_query("SELECT * FROM ".$config['SQLUserDB']['table']), or die(mysql_error());
+			 mysql_query("SELECT * FROM ".$config['SQLUserDB']['table']) or die(mysql_error());
 		
 		}
 		
